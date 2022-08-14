@@ -101,7 +101,7 @@ public class controlador {
     }
     //-----------------------------------------------------//
     @PostMapping ("experiencia/crear")
-    @ResponseBody
+
     public String agregarExperiencia(@RequestBody Experiencia_laboral experiencia){
         expRepo.save(experiencia);
         return "creado con exito";
@@ -109,7 +109,6 @@ public class controlador {
     
     
     @DeleteMapping("/experiencia/eliminar/{id}")
-    @ResponseBody
     public String eliminarExp(@PathVariable Long id){
         expRepo.deleteById(id);
         return "exito";
@@ -117,18 +116,27 @@ public class controlador {
     
     @PutMapping("/experiencia/editar/{id}")
 
-    public Experiencia_laboral editarExp(@PathVariable Long id, @RequestParam (name="puesto")  
-            String npuesto, @RequestParam (name="desde", required =false) String ndesde, @RequestParam (name="empresa", required= false) 
-            String nempresa,
-            @RequestParam (name="hasta", required = false) String nhasta, @RequestParam (name="logo", required= false) String nlogo){
+    public Experiencia_laboral editarExp(@PathVariable Long id, @RequestBody Experiencia_laboral exp){
         
-       Experiencia_laboral exp = expRepo.findById(id).orElse(null);
-       exp.setEmpresa(nempresa);
-       exp.setPuesto(npuesto);
-       exp.setDesde(ndesde);
-       exp.setHasta(nhasta);
-       exp.setLogo(nlogo);
-       expRepo.save(exp);
+       Experiencia_laboral expEdit = expRepo.findById(id).orElse(null);
+       
+       
+       if(exp.getEmpresa() != ""){
+        expEdit.setEmpresa(exp.getEmpresa());
+       }
+       if(exp.getPuesto() != ""){
+        expEdit.setPuesto(exp.getPuesto());
+       }
+       if(exp.getDesde() != ""){
+        expEdit.setDesde(exp.getDesde());
+       }
+       if(exp.getHasta() != ""){
+        expEdit.setHasta(exp.getHasta());
+       }
+       if(exp.getEmpresa() != ""){
+        expEdit.setLogo(exp.getLogo());
+       }
+       expRepo.save(expEdit);
        return exp;
        
     }
@@ -149,6 +157,7 @@ public class controlador {
     @ResponseBody
     public PorfolioDTO obtenerDTO(@PathVariable Long id){
         PorfolioDTO dto = new PorfolioDTO();
+        dto.setPersona_id(buscar(id).getId());
         dto.setNombre(buscar(id).getNombre());
         dto.setApeliido(buscar(id).getApellido());
         dto.setDescripcion(buscar(id).getDescripcion());
