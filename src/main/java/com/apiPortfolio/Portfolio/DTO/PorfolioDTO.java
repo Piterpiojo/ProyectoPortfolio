@@ -12,6 +12,7 @@ import com.apiPortfolio.Portfolio.model.Proyecto;
 import java.util.List;
 
 public class PorfolioDTO {
+    private Long persona_id;
     private String nombre;
     private String apeliido;
     private String foto;
@@ -30,6 +31,14 @@ public class PorfolioDTO {
 
     public void setBanner(String banner) {
         this.banner = banner;
+    }
+
+    public Long getPersona_id() {
+        return persona_id;
+    }
+
+    public void setPersona_id(Long persona_id) {
+        this.persona_id = persona_id;
     }
     
 
