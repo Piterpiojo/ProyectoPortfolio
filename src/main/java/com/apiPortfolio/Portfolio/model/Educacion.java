@@ -21,11 +21,11 @@ public class Educacion {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     Long edu_id;
     
-    private String Institucion;
-    private String Carrera;
+    private String institucion;
+    private String carrera;
     private String desde;
     private String hasta;
-    private String Logo;
+    private String logo;
     private Long persona_id;
 
 
@@ -34,12 +34,11 @@ public class Educacion {
 
     public Educacion(Long id, String Institucion, String Carrera, String desde, String hasta,String Logo ) {
         this.edu_id = id;
-        this.Institucion = Institucion;
-        this.Carrera = Carrera;
+        this.institucion = Institucion;
+        this.carrera = Carrera;
         this.desde = desde;
         this.hasta = hasta;
-
-        this.Logo = Logo;
+        this.logo = Logo;
         
     }
     
