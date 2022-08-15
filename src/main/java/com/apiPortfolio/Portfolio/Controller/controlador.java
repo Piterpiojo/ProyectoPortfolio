@@ -92,14 +92,68 @@ public class controlador {
     }
     
     @PutMapping("/persona/editar/{id}")
-    public Persona editarPersona(@PathVariable Long id, @RequestParam ("nombre") String nuevoNombre, @RequestParam ("Apellido") String nuevoApellido){
-        Persona p = inter.findPersona(id);
-        p.setApellido(nuevoApellido);
-        p.setNombre(nuevoNombre);
-        inter.savePersona(p);
-        return p;
+    public Persona editarPersona(@PathVariable Long id,@RequestBody Persona perso){
+        Persona persEdit = inter.findPersona(id);
+       if(perso.getNombre() != ""){
+         persEdit.setNombre(perso.getNombre());
+        }
+       if(perso.getApellido() != ""){
+         persEdit.setApellido(perso.getApellido());
+        }
+        
+       if(perso.getDescripcion() != ""){
+        persEdit.setDescripcion(perso.getDescripcion());
+       }
+       if(perso.getFoto() != ""){
+        persEdit.setFoto(perso.getFoto());
+       }
+       if(perso.getBanner() != ""){
+        persEdit.setBanner(perso.getBanner());
+       }
+       if(perso.getTitulo() != ""){
+           persEdit.setTitulo(perso.getTitulo());
+       }
+       inter.savePersona(persEdit);
+       return persEdit;
     }
     //-----------------------------------------------------//
+    @PostMapping ("educacion/crear")
+    public void agregarEducacion(@RequestBody Educacion educacion){
+        eduRepo.save(educacion);
+    }
+    
+    @DeleteMapping ("educacion/eliminar/{id}")
+    public void eliminarEducacion(@PathVariable Long id){
+        eduRepo.deleteById(id);
+    }
+    
+    @PutMapping ("educacion/editar/{id}")
+    
+    public Educacion educa (@PathVariable Long id, @RequestBody Educacion edu){
+        Educacion eduEdit = eduRepo.findById(id).orElse(null);
+        
+        if(edu.getCarrera() != ""){
+            eduEdit.setCarrera(edu.getCarrera());
+        }
+        if(edu.getInstitucion() != ""){
+            eduEdit.setInstitucion(edu.getInstitucion());
+        }
+        
+        if(edu.getDesde() != ""){
+        eduEdit.setDesde(edu.getDesde());
+       }
+       if(edu.getHasta() != ""){
+        eduEdit.setHasta(edu.getHasta());
+       }
+       if(edu.getLogo() != ""){
+        eduEdit.setLogo(edu.getLogo());
+       }
+       
+       eduRepo.save(eduEdit);
+       return eduEdit;
+    }
+    
+    //--------------------------------------------------------------------------
     @PostMapping ("experiencia/crear")
 
     public String agregarExperiencia(@RequestBody Experiencia_laboral experiencia){
@@ -116,10 +170,10 @@ public class controlador {
     
     @PutMapping("/experiencia/editar/{id}")
 
-    public Experiencia_laboral editarExp(@PathVariable Long id, @RequestBody Experiencia_laboral exp){
-        
+    public Experiencia_laboral editarExp(@PathVariable Long id,
+            @RequestBody Experiencia_laboral exp)
+    {
        Experiencia_laboral expEdit = expRepo.findById(id).orElse(null);
-       
        
        if(exp.getEmpresa() != ""){
         expEdit.setEmpresa(exp.getEmpresa());
@@ -133,14 +187,82 @@ public class controlador {
        if(exp.getHasta() != ""){
         expEdit.setHasta(exp.getHasta());
        }
-       if(exp.getEmpresa() != ""){
+       if(exp.getLogo() != ""){
         expEdit.setLogo(exp.getLogo());
        }
        expRepo.save(expEdit);
        return exp;
-       
     }
     
+    //--------------------------------------------------------------------------
+    @PostMapping("/habilidad/crear")
+    public void crearHab(@RequestBody Habilidad hab)
+    {
+        habRepo.save(hab);
+    }
+    
+    @DeleteMapping("/habilidad/eliminar/{id}")
+    public void eliminarHab(@PathVariable Long id)
+    {
+        habRepo.deleteById(id);
+    }
+    
+    @PutMapping("/habilidad/editar/{id}")
+    public Habilidad editarHab(@PathVariable Long id,@RequestBody Habilidad hab)
+    {
+        Habilidad habEdit = habRepo.findById(id).orElse(null);
+       if(hab.getNombre() != ""){
+        habEdit.setNombre(hab.getNombre());
+       }
+       
+       if(hab.getValor() >= 0){
+        habEdit.setValor(hab.getValor());
+       }
+       habRepo.save(habEdit);
+        
+       return habEdit; 
+    }
+    
+
+    
+    //--------------------------------------------------------------------------
+    @PostMapping ("/proyecto/crear")
+    public void crearPro(@RequestBody Proyecto pro)
+    {
+        proRepo.save(pro);
+    }
+    
+    @DeleteMapping ("/proyecto/eliminar/{id}")
+    public void eliminarPro(@PathVariable Long id)
+    {
+        proRepo.deleteById(id);
+    }
+    
+    @PutMapping ("/proyecto/editar/{id}")
+    public Proyecto editarPro (@PathVariable Long id, @RequestBody Proyecto pro)
+    {
+        Proyecto proEdit = proRepo.findById(id).orElse(null);
+       if(pro.getTitulo() != ""){
+        proEdit.setTitulo(pro.getTitulo());
+       }
+       if(pro.getDescripcion() != ""){
+        proEdit.setDescripcion(pro.getDescripcion());
+       }
+       if(pro.getImg() != ""){
+        proEdit.setImg(pro.getImg());
+       }
+       if(pro.getLink() != ""){
+        proEdit.setLink(pro.getLink());
+       }
+
+       proRepo.save(proEdit);
+        
+        return proEdit;
+    }
+    
+    
+    
+    //--------------------------------------------------------------------------
     @GetMapping ("/persona/traer/{id}")
     public Persona buscar(@PathVariable Long id){
         for(Persona p:inter.getPersona()){
