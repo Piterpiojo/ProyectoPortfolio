@@ -11,12 +11,10 @@ import com.apiPortfolio.Portfolio.model.Experiencia_laboral;
 import com.apiPortfolio.Portfolio.model.Habilidad;
 import com.apiPortfolio.Portfolio.model.Persona;
 import com.apiPortfolio.Portfolio.model.Proyecto;
-
 import com.apiPortfolio.Portfolio.repository.educacionRepositorio;
 import com.apiPortfolio.Portfolio.repository.experienciaRepositorio;
 import com.apiPortfolio.Portfolio.repository.habilidadRepositorio;
 import com.apiPortfolio.Portfolio.repository.proyectoRepositorio;
-
 import com.apiPortfolio.Portfolio.service.ServicioPorfolio;
 import java.util.ArrayList;
 import java.util.List;
