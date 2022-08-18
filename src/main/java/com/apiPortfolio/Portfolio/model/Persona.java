@@ -8,9 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,15 +15,16 @@ import lombok.Setter;
 @Entity
 public class Persona {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long Id;
     
     private String nombre;
-    private String Apellido;
+    private String apellido;
     private String foto;
     private String descripcion;
     private String titulo;
     private String banner;
+
     
 
 
@@ -36,14 +34,16 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(Long id, String nombre, String Apellido, String foto, String descripcion, String banner) {
-        this.Id = id;
+    public Persona(String nombre, String Apellido, String foto, String descripcion, String titulo, String banner) {
         this.nombre = nombre;
-        this.Apellido = Apellido;
+        this.apellido = Apellido;
         this.foto = foto;
         this.descripcion = descripcion;
+        this.titulo = titulo;
         this.banner = banner;
     }
+
+    
     
     
 }

@@ -16,7 +16,8 @@ import com.apiPortfolio.Portfolio.repository.educacionRepositorio;
 import com.apiPortfolio.Portfolio.repository.experienciaRepositorio;
 import com.apiPortfolio.Portfolio.repository.habilidadRepositorio;
 import com.apiPortfolio.Portfolio.repository.proyectoRepositorio;
-import com.apiPortfolio.Portfolio.service.IservicePorfolio;
+
+import com.apiPortfolio.Portfolio.service.ServicioPorfolio;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -28,7 +29,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,7 +38,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class controlador {
     
     @Autowired
-    private IservicePorfolio inter;
+    private ServicioPorfolio inter;
     @Autowired
     private educacionRepositorio eduRepo;
     @Autowired
@@ -215,7 +216,7 @@ public class controlador {
         habEdit.setNombre(hab.getNombre());
        }
        
-       if(hab.getValor() >= 0){
+       if(hab.getValor()>= 1){
         habEdit.setValor(hab.getValor());
        }
        habRepo.save(habEdit);
