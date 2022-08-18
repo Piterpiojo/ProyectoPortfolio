@@ -66,6 +66,7 @@ public class AuthController {
         usuarioService.save(usuario);
         
         return new ResponseEntity(new Mensaje("Usuario guardado"),HttpStatus.CREATED);
+        
     }
     
     @PostMapping("/login")
