@@ -24,6 +24,7 @@ public class Persona {
     private String descripcion;
     private String titulo;
     private String banner;
+    private String email;
 
     
 

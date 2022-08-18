@@ -7,6 +7,7 @@ package com.apiPortfolio.Portfolio.Security.Entity;
 import com.sun.istack.NotNull;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.Column;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,8 +28,10 @@ public class Usuario {
     private int id;
 
     @NotNull
+    @Column(unique = true)
     private String email;
     @NotNull
+
     private String password;
     @ManyToMany(fetch=FetchType.EAGER)
         @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name ="usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))

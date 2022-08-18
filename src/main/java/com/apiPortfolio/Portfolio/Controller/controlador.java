@@ -5,13 +5,13 @@
 package com.apiPortfolio.Portfolio.Controller;
 
 import com.apiPortfolio.Portfolio.DTO.PorfolioDTO;
-import com.apiPortfolio.Portfolio.model.Domicilio;
+
 import com.apiPortfolio.Portfolio.model.Educacion;
 import com.apiPortfolio.Portfolio.model.Experiencia_laboral;
 import com.apiPortfolio.Portfolio.model.Habilidad;
 import com.apiPortfolio.Portfolio.model.Persona;
 import com.apiPortfolio.Portfolio.model.Proyecto;
-import com.apiPortfolio.Portfolio.repository.domicilioRepository;
+
 import com.apiPortfolio.Portfolio.repository.educacionRepositorio;
 import com.apiPortfolio.Portfolio.repository.experienciaRepositorio;
 import com.apiPortfolio.Portfolio.repository.habilidadRepositorio;
@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
 
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,8 +44,6 @@ public class controlador {
     @Autowired
     private educacionRepositorio eduRepo;
     @Autowired
-    private domicilioRepository domiRepo;
-    @Autowired
     private experienciaRepositorio expRepo;
     @Autowired
     private habilidadRepositorio habRepo;
@@ -56,27 +56,8 @@ public class controlador {
     public List<Persona> getPersonas(){
         return inter.getPersona();
     }
-    // ---------------------------------------//
 
-    
-   
-    public List<Domicilio> getDomicilio(){
-        List<Domicilio> listadom = domiRepo.findAll();
-        return listadom;
-    }
-    
-   
-    
 
-    public Domicilio buscarDom(@PathVariable Long id){
-        for(Domicilio d:getDomicilio()){
-  
-            if(Objects.equals(d.getDom_id(), id)){
-                return d;
-            }
-        }
-       return null;
-    }
 
 
     //--------------------------------------//
@@ -196,6 +177,7 @@ public class controlador {
     }
     
     //--------------------------------------------------------------------------
+
     @PostMapping("/habilidad/crear")
     public void crearHab(@RequestBody Habilidad hab)
     {
@@ -208,6 +190,7 @@ public class controlador {
         habRepo.deleteById(id);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/habilidad/editar/{id}")
     public Habilidad editarHab(@PathVariable Long id,@RequestBody Habilidad hab)
     {
@@ -276,9 +259,10 @@ public class controlador {
     }
     
     
-    @GetMapping ("/persona/obtenertodo/{id}")
+    @GetMapping ("/persona/obtenertodo/{email}")
     @ResponseBody
-    public PorfolioDTO obtenerDTO(@PathVariable Long id){
+    public PorfolioDTO obtenerDTO(@PathVariable String email){
+        Long id= buscarIDporEmail(email);
         PorfolioDTO dto = new PorfolioDTO();
         dto.setPersona_id(buscar(id).getId());
         dto.setNombre(buscar(id).getNombre());
@@ -287,7 +271,6 @@ public class controlador {
         dto.setTitulo(buscar(id).getTitulo());
         dto.setBanner(buscar(id).getBanner());
         dto.setFoto(buscar(id).getFoto());
-        dto.setCiudad(buscarDom(id).getCiudad());
         dto.setLedu(getEducacion(id));
         dto.setLexp(getExp(id));
         dto.setLhabl(getHabilidad(id));
@@ -346,5 +329,15 @@ public class controlador {
    }
         
         return listaProid;
+    }
+
+    public Long buscarIDporEmail(String email){
+        for(Persona p:inter.getPersona()){
+  
+            if(Objects.equals(p.getEmail(), email)){
+                return p.getId();
+            }
+        }
+        return null;
     }
 }

@@ -15,7 +15,7 @@ import lombok.Setter;
 @Entity
 public class Educacion {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long edu_id;
     
     private String institucion;

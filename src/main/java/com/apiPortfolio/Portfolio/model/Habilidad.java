@@ -14,8 +14,8 @@ import lombok.Setter;
 @Entity
 public class Habilidad {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    Long hab_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long hab_id;
     
     private String nombre;
     private int valor;

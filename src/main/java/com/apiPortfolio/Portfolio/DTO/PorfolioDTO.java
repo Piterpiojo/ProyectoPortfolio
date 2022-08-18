@@ -18,7 +18,6 @@ public class PorfolioDTO {
     private String foto;
     private String descripcion;
     private String titulo;
-    private String ciudad;
     private String banner;
     private List <Educacion> ledu ;
     private List <Experiencia_laboral> lexp ;
@@ -62,13 +61,7 @@ public class PorfolioDTO {
         this.apeliido = apeliido;
     }
 
-    public String getCiudad() {
-        return ciudad;
-    }
 
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
 
     public List<Educacion> getLedu() {
         return ledu;
