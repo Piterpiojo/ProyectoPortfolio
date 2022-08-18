@@ -47,7 +47,7 @@ public class controlador {
     private habilidadRepositorio habRepo;
     @Autowired
     private proyectoRepositorio proRepo;
-    
+
     
     
     @GetMapping ("/persona/traer")
@@ -338,4 +338,7 @@ public class controlador {
         }
         return null;
     }
+    
+    
+
 }
