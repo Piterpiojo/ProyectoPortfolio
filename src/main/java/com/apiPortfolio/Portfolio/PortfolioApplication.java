@@ -15,7 +15,7 @@ public class PortfolioApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/greeting-javaconfig").allowedOrigins("https://fierce-cliffs-56094.herokuapp.com/");
+				registry.addMapping("/greeting-javaconfig").allowedOrigins("https://portfolio-angular-c8e59.firebaseapp.com/");
 			}
 		};
 	}

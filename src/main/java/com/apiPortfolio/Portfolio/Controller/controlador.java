@@ -34,7 +34,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-
+@CrossOrigin(origins="https://portfolio-angular-c8e59.firebaseapp.com/")
 public class controlador {
     
     @Autowired
