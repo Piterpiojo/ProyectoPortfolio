@@ -4,6 +4,8 @@
  */
 package com.apiPortfolio.Portfolio.model;
 
+import com.sun.istack.NotNull;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,6 +26,8 @@ public class Persona {
     private String descripcion;
     private String titulo;
     private String banner;
+    @NotNull
+    @Column(unique = true)
     private String email;
 
     
