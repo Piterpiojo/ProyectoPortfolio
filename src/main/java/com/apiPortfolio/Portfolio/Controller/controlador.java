@@ -59,18 +59,21 @@ public class controlador {
 
 
     //--------------------------------------//
+
     @PostMapping ("/persona/crear")
     public String crearPersona(@RequestBody Persona persona){
         inter.savePersona(persona);
         return "exito";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("/persona/eliminar/{id}")
     public String eliminarPersona(@PathVariable Long id){
         inter.deletePersona(id);
         return "eliminado con exito";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/persona/editar/{id}")
     public Persona editarPersona(@PathVariable Long id,@RequestBody Persona perso){
         Persona persEdit = inter.findPersona(id);
@@ -97,18 +100,20 @@ public class controlador {
        return persEdit;
     }
     //-----------------------------------------------------//
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("educacion/crear")
     public void agregarEducacion(@RequestBody Educacion educacion){
         eduRepo.save(educacion);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("educacion/eliminar/{id}")
     public void eliminarEducacion(@PathVariable Long id){
         eduRepo.deleteById(id);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("educacion/editar/{id}")
-    
     public Educacion educa (@PathVariable Long id, @RequestBody Educacion edu){
         Educacion eduEdit = eduRepo.findById(id).orElse(null);
         
@@ -134,20 +139,21 @@ public class controlador {
     }
     
     //--------------------------------------------------------------------------
+   
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("experiencia/crear")
-
     public String agregarExperiencia(@RequestBody Experiencia_laboral experiencia){
         expRepo.save(experiencia);
         return "creado con exito";
     }
     
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/experiencia/eliminar/{id}")
     public String eliminarExp(@PathVariable Long id){
         expRepo.deleteById(id);
         return "exito";
     }
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/experiencia/editar/{id}")
 
     public Experiencia_laboral editarExp(@PathVariable Long id,
@@ -175,13 +181,14 @@ public class controlador {
     }
     
     //--------------------------------------------------------------------------
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/habilidad/crear")
     public void crearHab(@RequestBody Habilidad hab)
     {
         habRepo.save(hab);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/habilidad/eliminar/{id}")
     public void eliminarHab(@PathVariable Long id)
     {
@@ -208,18 +215,21 @@ public class controlador {
 
     
     //--------------------------------------------------------------------------
+   @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("/proyecto/crear")
     public void crearPro(@RequestBody Proyecto pro)
     {
         proRepo.save(pro);
     }
     
+   @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("/proyecto/eliminar/{id}")
     public void eliminarPro(@PathVariable Long id)
     {
         proRepo.deleteById(id);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("/proyecto/editar/{id}")
     public Proyecto editarPro (@PathVariable Long id, @RequestBody Proyecto pro)
     {
