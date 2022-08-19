@@ -12,6 +12,7 @@ import com.apiPortfolio.Portfolio.model.Proyecto;
 import java.util.List;
 
 public class PorfolioDTO {
+
     private Long persona_id;
     private String nombre;
     private String apeliido;
@@ -19,10 +20,10 @@ public class PorfolioDTO {
     private String descripcion;
     private String titulo;
     private String banner;
-    private List <Educacion> ledu ;
-    private List <Experiencia_laboral> lexp ;
-    private List <Habilidad> lhabl ;
-    private List <Proyecto> lpro ;
+    private List<Educacion> ledu;
+    private List<Experiencia_laboral> lexp;
+    private List<Habilidad> lhabl;
+    private List<Proyecto> lpro;
 
     public String getBanner() {
         return banner;
@@ -39,8 +40,6 @@ public class PorfolioDTO {
     public void setPersona_id(Long persona_id) {
         this.persona_id = persona_id;
     }
-    
-
 
     public PorfolioDTO() {
     }
@@ -60,8 +59,6 @@ public class PorfolioDTO {
     public void setApeliido(String apeliido) {
         this.apeliido = apeliido;
     }
-
-
 
     public List<Educacion> getLedu() {
         return ledu;
@@ -95,8 +92,6 @@ public class PorfolioDTO {
         this.lpro = lpro;
     }
 
-    
-
     public String getDescripcion() {
         return descripcion;
     }
@@ -104,7 +99,7 @@ public class PorfolioDTO {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
+
     public String getFoto() {
         return foto;
     }
@@ -120,6 +115,5 @@ public class PorfolioDTO {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-        
-    
+
 }

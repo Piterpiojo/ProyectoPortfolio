@@ -11,13 +11,15 @@ import javax.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter
+@Setter
 @Entity
 public class Educacion {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long edu_id;
-    
+
     private String institucion;
     private String carrera;
     private String desde;
@@ -25,19 +27,17 @@ public class Educacion {
     private String logo;
     private Long persona_id;
 
-
     public Educacion() {
     }
 
-    public Educacion(Long id, String Institucion, String Carrera, String desde, String hasta,String Logo ) {
+    public Educacion(Long id, String Institucion, String Carrera, String desde, String hasta, String Logo) {
         this.edu_id = id;
         this.institucion = Institucion;
         this.carrera = Carrera;
         this.desde = desde;
         this.hasta = hasta;
         this.logo = Logo;
-        
+
     }
-    
-    
+
 }
