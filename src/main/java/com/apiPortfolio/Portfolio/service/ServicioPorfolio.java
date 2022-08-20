@@ -41,12 +41,11 @@ public class ServicioPorfolio implements IservicioPersona {
     public boolean existeEmail(Persona pers){
   
         for (Persona p: getPersona()){
-            if(p.getEmail() == pers.getEmail()){
+            if(pers.getEmail().equals(p.getEmail())){
                 return true;
             }
         }
         return false;
-        
     }
     
 }

@@ -62,7 +62,7 @@ public class controlador {
         if(servicioPersonas.existeEmail(persona)){
             return "ese correo ya esta registrado";
         }else{
-                    servicioPersonas.savePersona(persona);
+            servicioPersonas.savePersona(persona);
         return "exito";
         }
 
@@ -79,23 +79,23 @@ public class controlador {
     @PutMapping("/persona/editar/{id}")
     public Persona editarPersona(@PathVariable Long id, @RequestBody Persona perso) {
         Persona persEdit = servicioPersonas.findPersona(id);
-        if (perso.getNombre() != "") {
+        if (!"".equals(perso.getNombre())) {
             persEdit.setNombre(perso.getNombre());
         }
-        if (perso.getApellido() != "") {
+        if (!"".equals(perso.getApellido())) {
             persEdit.setApellido(perso.getApellido());
         }
 
-        if (perso.getDescripcion() != "") {
+        if (!"".equals(perso.getDescripcion())) {
             persEdit.setDescripcion(perso.getDescripcion());
         }
-        if (perso.getFoto() != "") {
+        if (!"".equals(perso.getFoto())) {
             persEdit.setFoto(perso.getFoto());
         }
-        if (perso.getBanner() != "") {
+        if (!"".equals(perso.getBanner())) {
             persEdit.setBanner(perso.getBanner());
         }
-        if (perso.getTitulo() != "") {
+        if (!"".equals(perso.getTitulo())) {
             persEdit.setTitulo(perso.getTitulo());
         }
         servicioPersonas.savePersona(persEdit);
@@ -120,20 +120,20 @@ public class controlador {
     public Educacion educa(@PathVariable Long id, @RequestBody Educacion edu) {
         Educacion eduEdit = servicioEducacion.buscarEducacion(id);
 
-        if (edu.getCarrera() != "") {
+        if (!"".equals(edu.getCarrera())) {
             eduEdit.setCarrera(edu.getCarrera());
         }
-        if (edu.getInstitucion() != "") {
+        if (!"".equals(edu.getInstitucion())) {
             eduEdit.setInstitucion(edu.getInstitucion());
         }
 
-        if (edu.getDesde() != "") {
+        if (!"".equals(edu.getDesde())) {
             eduEdit.setDesde(edu.getDesde());
         }
-        if (edu.getHasta() != "") {
+        if (!"".equals(edu.getHasta())) {
             eduEdit.setHasta(edu.getHasta());
         }
-        if (edu.getLogo() != "") {
+        if (!"".equals(edu.getLogo())) {
             eduEdit.setLogo(edu.getLogo());
         }
 
@@ -162,19 +162,19 @@ public class controlador {
             @RequestBody Experiencia_laboral exp) {
         Experiencia_laboral expEdit = servicioExperiencia.buscarExperiencia(id);
 
-        if (exp.getEmpresa() != "") {
+        if (!"".equals(exp.getEmpresa())) {
             expEdit.setEmpresa(exp.getEmpresa());
         }
-        if (exp.getPuesto() != "") {
+        if (!"".equals(exp.getPuesto())) {
             expEdit.setPuesto(exp.getPuesto());
         }
-        if (exp.getDesde() != "") {
+        if (!"".equals(exp.getDesde())) {
             expEdit.setDesde(exp.getDesde());
         }
-        if (exp.getHasta() != "") {
+        if (!"".equals(exp.getHasta())) {
             expEdit.setHasta(exp.getHasta());
         }
-        if (exp.getLogo() != "") {
+        if (!"".equals(exp.getLogo())) {
             expEdit.setLogo(exp.getLogo());
         }
         servicioExperiencia.GuardarExperiencia(expEdit);
@@ -198,7 +198,7 @@ public class controlador {
     @PutMapping("/habilidad/editar/{id}")
     public Habilidad editarHab(@PathVariable Long id, @RequestBody Habilidad hab) {
         Habilidad habEdit = servicioHabilidad.buscarHabilidad(id);
-        if (hab.getNombre() != "") {
+        if (!"".equals(hab.getNombre())) {
             habEdit.setNombre(hab.getNombre());
         }
 
@@ -227,16 +227,16 @@ public class controlador {
     @PutMapping("/proyecto/editar/{id}")
     public Proyecto editarPro(@PathVariable Long id, @RequestBody Proyecto pro) {
         Proyecto proEdit = servicioProyecto.buscarProyecto(id);
-        if (pro.getTitulo() != "") {
+        if (!"".equals(pro.getTitulo())) {
             proEdit.setTitulo(pro.getTitulo());
         }
-        if (pro.getDescripcion() != "") {
+        if (!"".equals(pro.getDescripcion())) {
             proEdit.setDescripcion(pro.getDescripcion());
         }
-        if (pro.getImg() != "") {
+        if (!"".equals(pro.getImg())) {
             proEdit.setImg(pro.getImg());
         }
-        if (pro.getLink() != "") {
+        if (!"".equals(pro.getLink())) {
             proEdit.setLink(pro.getLink());
         }
 
