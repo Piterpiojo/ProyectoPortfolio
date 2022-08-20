@@ -37,4 +37,6 @@ public class ServicioProyecto implements IservicioProyecto {
         Proyecto pro = Repositorio.findById(id).orElse(null);
         return pro;
     }
+    
+
 }

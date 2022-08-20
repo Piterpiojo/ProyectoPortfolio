@@ -49,15 +49,19 @@ public class controlador {
     
     @Autowired
     private ServicioProyecto servicioProyecto;
-
+   
+    //------------------Persona--------------------//
+   
     @GetMapping("/persona/traer")
     public List<Persona> getPersonas() {
         return servicioPersonas.getPersona();
     }
 
-    //------------------Persona--------------------//
     @PostMapping("/persona/crear")
     public String crearPersona(@RequestBody Persona persona) {
+        if(servicioPersonas.existeEmail(persona)){
+            return "ese correo ya esta registrado";
+        }
         servicioPersonas.savePersona(persona);
         return "exito";
     }

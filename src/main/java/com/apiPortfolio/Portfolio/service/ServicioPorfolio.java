@@ -38,6 +38,15 @@ public class ServicioPorfolio implements IservicioPersona {
         return perso;
     }
     
-
+    public boolean existeEmail(Persona pers){
+  
+        for (Persona p: getPersona()){
+            if(p.getEmail() == pers.getEmail()){
+                return true;
+            }
+        }
+        return false;
+        
+    }
     
 }
