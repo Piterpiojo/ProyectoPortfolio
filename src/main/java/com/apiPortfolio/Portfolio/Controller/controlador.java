@@ -61,9 +61,11 @@ public class controlador {
     public String crearPersona(@RequestBody Persona persona) {
         if(servicioPersonas.existeEmail(persona)){
             return "ese correo ya esta registrado";
-        }
-        servicioPersonas.savePersona(persona);
+        }else{
+                    servicioPersonas.savePersona(persona);
         return "exito";
+        }
+
     }
 
     @PreAuthorize("hasRole('ADMIN')")
