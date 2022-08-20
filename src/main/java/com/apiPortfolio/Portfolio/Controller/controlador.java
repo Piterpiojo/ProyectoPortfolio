@@ -37,12 +37,16 @@ public class controlador {
 
     @Autowired
     private ServicioPorfolio servicioPersonas;
+    
     @Autowired
     private ServicioEducacion servicioEducacion;
+    
     @Autowired
     private ServicioExperiencia servicioExperiencia;
+    
     @Autowired
     private ServicioHabilidad servicioHabilidad;
+    
     @Autowired
     private ServicioProyecto servicioProyecto;
 

@@ -8,11 +8,9 @@ import com.apiPortfolio.Portfolio.model.Proyecto;
 import com.apiPortfolio.Portfolio.repository.proyectoRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-/**
- *
- * @author delgado
- */
+@Service
 public class ServicioProyecto implements IservicioProyecto {
 
     @Autowired

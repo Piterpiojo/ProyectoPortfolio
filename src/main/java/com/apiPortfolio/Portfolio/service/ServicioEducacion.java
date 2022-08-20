@@ -8,37 +8,35 @@ import com.apiPortfolio.Portfolio.model.Educacion;
 import com.apiPortfolio.Portfolio.repository.educacionRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-/**
- *
- * @author delgado
- */
+@Service
 public class ServicioEducacion implements IservicioEducacion {
     @Autowired
-    private educacionRepositorio repositorioEducacion;
+    private educacionRepositorio Repositorio;
     
     
     
     @Override
     public List<Educacion> getEducacion() {
-        List<Educacion> edu = repositorioEducacion.findAll();
+        List<Educacion> edu = Repositorio.findAll();
         return edu;
         
     }
 
     @Override
     public void guardarEducacion(Educacion edu) {
-        repositorioEducacion.save(edu);
+        Repositorio.save(edu);
     }
 
     @Override
     public void eliminarEducacion(Long id) {
-        repositorioEducacion.deleteById(id);
+        Repositorio.deleteById(id);
     }
 
     @Override
     public Educacion buscarEducacion(Long id) {
-        Educacion edu = repositorioEducacion.findById(id).orElse(null);
+        Educacion edu = Repositorio.findById(id).orElse(null);
         return edu;
     }
     

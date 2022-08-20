@@ -8,11 +8,9 @@ import com.apiPortfolio.Portfolio.model.Experiencia_laboral;
 import com.apiPortfolio.Portfolio.repository.experienciaRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-/**
- *
- * @author delgado
- */
+@Service
 public class ServicioExperiencia implements IservicioExperiencia {
 
     @Autowired

@@ -8,11 +8,9 @@ import com.apiPortfolio.Portfolio.model.Habilidad;
 import com.apiPortfolio.Portfolio.repository.habilidadRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-/**
- *
- * @author delgado
- */
+@Service
 public class ServicioHabilidad implements IservicioHabilidad {
     
     @Autowired
